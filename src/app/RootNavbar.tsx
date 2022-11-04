@@ -1,8 +1,8 @@
 "use client";
 
-import Logo from "../components/branding/Logo";
+import Bund from "../components/branding/Bund";
 import NavbarLink from "../components/NavbarLink";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 const navBarItems = [
@@ -25,7 +25,6 @@ const RootNavbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrollOffset(window.pageYOffset);
-    // clean up code
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -34,18 +33,13 @@ const RootNavbar = () => {
   return (
     <nav
       className={clsx(
-        "sticky top-0 flex flex-row justify-center border-b border-transparent bg-neutral-50/70 backdrop-blur transition-[border-color]",
-        scrollOffset > 72 ? "!border-neutral-200" : ""
+        "duration-400 fixed top-0 left-0 right-0 flex flex-row justify-center overflow-visible border-b border-transparent bg-neutral-50/70 backdrop-blur transition-[max-height]",
+        scrollOffset > 0 ? "max-h-20 !border-neutral-200" : "max-h-60"
       )}
     >
       <div className="flex w-full max-w-screen-xl flex-row space-x-4 py-6 px-8 md:space-x-8">
-        <Logo className="relative top-1 mr-auto" />
-        <div className="flex flex-row justify-end space-x-4 md:space-x-8">
-          {navBarItems.map((item, index) => (
-            <NavbarLink href={item.href} key={index}>
-              {item.title}
-            </NavbarLink>
-          ))}
+        <div className="flex flex-row justify-end space-x-4 overflow-visible transition-all md:space-x-8">
+          <Bund isClosed={scrollOffset > 0} />
         </div>
       </div>
     </nav>

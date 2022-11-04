@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animate-bund-flag-expand {
+  transform: scaleY(0.365);
+  transform-origin: center top;
+  animation: draw-expand 500ms linear forwards;
+}
+
+@keyframes draw-expand {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.animate-bund-flag-retract {
+  transform: scaleY(1);
+  transform-origin: center top;
+  animation: draw-retract 300ms ease-out forwards;
+}
+
+@keyframes draw-retract {
+  to {
+    transform: scaleY(0.365);
+  }
+}
+
+/* .transition-height {
+  max-height: 150px;
+  transition: max-height 500ms linear;
+}
+
+.transition-height-retract {
+  max-height: 82px;
+  transition: max-height 300ms ease-out;
+} */

@@ -28,14 +28,11 @@ export default function RootLayout({
         }}
       >
         <RootNavbar />
-        <main className="flex w-screen justify-center px-4">
+        <main className="mt-36 flex w-screen justify-center px-4">
           <div className="flex max-w-screen-xl flex-grow flex-col justify-center">
             {children}
           </div>
         </main>
-        <footer>
-          <RootFooter />
-        </footer>
       </body>
     </html>
   );
