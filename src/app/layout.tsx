@@ -1,5 +1,10 @@
 import "./globals.css";
 import RootNavbar from "./RootNavbar";
+import { Inter } from "@next/font/google";
+import clsx from "clsx";
+import RootFooter from "./RootFooter";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -13,13 +18,24 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width" />
         {/* <meta charSet="utf-8" /> */}
       </head>
-      <body className="min-h-screen overscroll-x-none bg-neutral-50">
+      <body
+        className={clsx(
+          "min-h-screen overscroll-x-none bg-neutral-50",
+          inter.className
+        )}
+        style={{
+          textRendering: "optimizeLegibility",
+        }}
+      >
         <RootNavbar />
         <main className="flex w-screen justify-center px-4">
           <div className="flex max-w-screen-xl flex-grow flex-col justify-center">
             {children}
           </div>
         </main>
+        <footer>
+          <RootFooter />
+        </footer>
       </body>
     </html>
   );

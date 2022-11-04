@@ -8,31 +8,31 @@ const featureCardContent: cardContent[] = [
   {
     title: "Paimon eating",
     description:
-      "You’ll have the best possible mobile gaming experience on your shitty phone.",
+      "You’ll have the best possible mobile Genshin Impact experience on your shitty phone.",
     icon: GamepadIcon,
   },
   {
-    title: "Paimon eating",
+    title: "The Google way",
     description:
-      "You’ll have the best possible mobile gaming experience on your shitty phone.",
+      "We deliver actual Pixel features, down to the smallest of details.",
     icon: GamepadIcon,
   },
   {
-    title: "Paimon eating",
+    title: "No gore",
     description:
-      "You’ll have the best possible mobile gaming experience on your shitty phone.",
+      "This ROM doesn't include a shitton of customization. You can’t change your stupid battery icon shape to circle.",
     icon: GamepadIcon,
   },
   {
-    title: "Paimon eating",
+    title: "Great UI performance",
     description:
-      "You’ll have the best possible mobile gaming experience on your shitty phone.",
+      "We use various techniques to make the UI smooth and minimize jitter. We use SkiaVK (Vulkan) UI Renderer by default.",
     icon: GamepadIcon,
   },
   {
-    title: "Paimon eating",
+    title: "Sensible thermals",
     description:
-      "You’ll have the best possible mobile gaming experience on your shitty phone.",
+      "We won't let your phone overheat and explode, unlike certain phone manufacturers do.",
     icon: GamepadIcon,
   },
 ];

@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/font": "^13.0.1",
     "clsx": "^1.2.1",
     "next": "^13.0.1",
     "path-to-regexp": "^6.2.1",

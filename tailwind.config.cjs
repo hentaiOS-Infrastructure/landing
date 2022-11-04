@@ -5,7 +5,11 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        hero: "0 0 25px 0"
+      }
+    },
   },
   plugins: [
     plugin(function ({ addVariant }) {
