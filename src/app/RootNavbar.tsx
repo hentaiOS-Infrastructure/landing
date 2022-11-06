@@ -34,7 +34,7 @@ const RootNavbar = () => {
     <nav
       className={clsx(
         "fixed top-0 left-0 right-0 flex flex-row justify-center overflow-visible border-b border-transparent bg-neutral-50/70 backdrop-blur transition-[max-height,border-color] duration-500",
-        scrollOffset > 0 ? "max-h-20 !border-neutral-200" : "max-h-60"
+        scrollOffset > 0 ? "max-h-20 !border-neutral-200/60" : "max-h-60"
       )}
     >
       <div className="flex w-full max-w-screen-xl flex-row space-x-4 py-6 px-8 md:space-x-8">
