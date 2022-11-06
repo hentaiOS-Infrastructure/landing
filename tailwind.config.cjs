@@ -8,6 +8,10 @@ module.exports = {
     extend: {
       boxShadow: {
         hero: "0 0 25px 0"
+      },
+      colors: {
+        cold: "#bad8ff",
+        hosPink: "#d30f54"
       }
     },
   },

@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import { GamepadIcon } from "../components/icons/FeatureCardIcons";
+import { GamepadIcon } from "../../components/icons/FeatureCardIcons";
 
 /*
  * Declare feature card content here

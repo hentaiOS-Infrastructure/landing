@@ -1,6 +1,20 @@
+import Installer from "../components/branding/cards/Installer";
+import FeaturedBuild from "../components/branding/FeaturedBuild";
+import HeroBanner from "../components/branding/HeroBanner";
+import bannerContent from "./(content)/banner";
+
 export default function Index() {
   return (
     <>
+      <HeroBanner title={bannerContent.heading} enabled={bannerContent.enabled}>
+        {bannerContent.desc}
+      </HeroBanner>
+      <FeaturedBuild>
+        hentaiOS TwistedScarlett, the latest version of hentaiOS, includes
+        stronger protections for user privacy, improvements for developer
+        productivity, and much more.
+      </FeaturedBuild>
+      <Installer />
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nihil
       ratione sit repellendus, tenetur, blanditiis ducimus numquam, quam
       accusantium asperiores omnis quos expedita laudantium at sequi adipisci
