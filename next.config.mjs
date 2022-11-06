@@ -13,6 +13,6 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  experimental: { appDir: true, runtime: "experimental-edge" }
+  experimental: { appDir: true }
 };
 export default config;
