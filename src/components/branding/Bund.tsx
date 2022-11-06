@@ -65,7 +65,7 @@ const Bund = ({ isClosed }: { isClosed: boolean }) => {
     <div className="flex">
       <Badge className="mr-[6px]" />
       <Flag
-        className={`mr-[6px] transition-all duration-500 ease-in-out ${
+        className={`mr-[6px] transition-[max-height] duration-500 ease-in-out ${
           isClosed ? "max-h-8" : "max-h-[5.5rem]"
         }`}
       />
