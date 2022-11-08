@@ -1,24 +1,35 @@
 import { SVGProps } from "react";
+import clsx from "clsx";
 
-const Installer = () => {
+const Installer = ({ className }: { className?: string }) => {
   return (
-    <div className="mb-20">
-      <a href="#" className="inline">
-        <div className=" inline-flex max-w-[18rem] flex-col rounded-xl border-2 border-hosPink transition-shadow hover:shadow-lg lg:w-1/2">
-          <div className="flex h-96 flex-col justify-end rounded-xl bg-hosPink px-8 pb-8 text-white">
+    <div
+      className={clsx(
+        "square group relative flex w-full flex-col rounded-xl border-2 border-hosPink/25 transition-shadow md:border-hosPink md:hover:shadow-lg",
+        className
+      )}
+    >
+      <a href="#">
+        <div className=" flex flex-col justify-end rounded-lg bg-hosPink text-white">
+          <div className="mt-40 px-8 pb-8">
             <FlashIcon />
-            <h3 className="mt-4 text-2xl font-medium tracking-tight">
+            <h3 className="mt-4 text-3xl font-medium tracking-tight">
               Flash Tool
             </h3>
             <p>Update or install hentaiOS onto your phone.</p>
           </div>
-          <div className="flex items-center px-6">
-            <button className="my-6 w-fit rounded-full border-2 border-hosPink bg-transparent px-8 py-[0.35rem] text-xs font-bold tracking-tight text-hosPink">
-              Open Flash Tool
-            </button>
-          </div>
+        </div>
+        <div className="flex items-center px-6">
+          <button className="my-6 w-fit rounded-full border-2 border-hosPink bg-transparent px-8 py-[0.35rem] text-sm font-bold tracking-tight text-hosPink transition-colors md:group-hover:bg-hosPink md:group-hover:text-white">
+            Open Flash Tool
+          </button>
         </div>
       </a>
+      <div className="absolute h-full w-full rounded-lg bg-white/50 p-4 md:hidden">
+        <span className="w-fit rounded-lg bg-white py-1 px-4 font-medium uppercase text-hosPink ">
+          Requires PC
+        </span>
+      </div>
     </div>
   );
 };
@@ -45,6 +56,7 @@ const FlashIcon = (props: SVGProps<SVGSVGElement>) => (
       stroke="#fff"
       strokeWidth={1.612}
     />
+    <circle cx={59.528} cy={5.255} r={1.135} fill="#fff" />
   </svg>
 );
 

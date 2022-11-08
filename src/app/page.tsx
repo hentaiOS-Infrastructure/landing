@@ -1,6 +1,13 @@
+import ActionCard from "../components/branding/cards/ActionCard";
 import Installer from "../components/branding/cards/Installer";
+import StudentPortal from "../components/branding/cards/StudentPortal";
 import FeaturedBuild from "../components/branding/FeaturedBuild";
 import HeroBanner from "../components/branding/HeroBanner";
+import StudentPortalSvg from "../components/branding/StudentPortalSvg";
+import {
+  MaterialSymbolsDocs,
+  MaterialSymbolsDownloadRounded,
+} from "../components/icons/FeatureCardIcons";
 import bannerContent from "./(content)/banner";
 
 export default function Index() {
@@ -14,7 +21,45 @@ export default function Index() {
         stronger protections for user privacy, improvements for developer
         productivity, and much more.
       </FeaturedBuild>
-      <Installer />
+      <section
+        id="actions"
+        className="mb-10 flex flex-col gap-4 md:flex-row md:gap-8"
+      >
+        <ActionCard href="#" className="flex w-full bg-hosPink">
+          <MaterialSymbolsDownloadRounded className="text-[2rem]" />
+          <span>Downloads</span>
+        </ActionCard>
+        <ActionCard href="#" className="flex w-full bg-hosPink">
+          <MaterialSymbolsDocs className="text-[2rem]" />
+          <span>Blog</span>
+        </ActionCard>
+      </section>
+      <section
+        id="hero"
+        className="mb-20 grid grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1 md:gap-8"
+      >
+        <Installer />
+        <StudentPortal />
+      </section>
+      {/* <div className=" md:mb-20 md:flex">
+        <Installer className="mb-6 max-w-[50%] md:mr-8" />
+
+        <section className="grid grid-cols-1 grid-rows-2 gap-4 md:h-fit md:grid-cols-2">
+          <GenericCard className="col-span-2  bg-black ">
+            <div className="hś-full w-full border border-hosGold bg-portalBg"></div>
+            <div className="group relative flex h-full w-full items-center justify-center">
+              <StudentPortalSvg className="text-hosGold transition-colors group-hover:text-neutral-50" />
+              <span className="absolute left-16 bottom-10 max-w-[4rem] text-2xl font-medium leading-tight text-hosGold transition-colors group-hover:text-neutral-50">
+                Student Portal
+              </span>
+            </div>
+          </GenericCard>
+          <GenericCard className=" col-span-1 bg-hosPink">
+            fgdghdfhfg
+          </GenericCard>
+          <GenericCard className=" bg-hosPink">dsadas</GenericCard>
+        </section>
+      </div> */}
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nihil
       ratione sit repellendus, tenetur, blanditiis ducimus numquam, quam
       accusantium asperiores omnis quos expedita laudantium at sequi adipisci

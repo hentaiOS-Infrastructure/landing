@@ -7,18 +7,18 @@ const FeaturedBuild = (props: FeaturedBuildProps) => {
   const { svgSrc, children } = props;
   return (
     <div className="mb-20">
-      <a href="#" className="inline">
-        <div className="border-neutral-300 inline-flex flex-col rounded-xl border px-10 py-10 transition-shadow hover:shadow-lg md:px-20 md:py-16 lg:w-1/2">
+      <div className="group flex flex-col rounded-xl border border-neutral-300 transition-shadow hover:shadow-lg lg:w-1/2">
+        <a href="#" className="px-10 py-10 md:px-20 md:py-16">
           <img
             src={svgSrc ?? "/featured-logo-default.svg"}
-            className="mb-4 w-32"
+            className="mb-4 h-10"
           />
           <p className="mb-6 font-medium tracking-tight">{children}</p>
-          <button className="w-fit rounded-full bg-cold px-8 py-2 text-xs font-bold tracking-tight">
+          <button className="w-fit rounded-full bg-cold px-8 py-2 text-sm font-bold tracking-tight transition-colors group-hover:bg-cold-dark">
             Learn More
           </button>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   );
 };

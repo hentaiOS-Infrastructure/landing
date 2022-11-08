@@ -10,8 +10,13 @@ module.exports = {
         hero: "0 0 25px 0"
       },
       colors: {
-        cold: "#bad8ff",
-        hosPink: "#d30f54"
+        cold: {
+          DEFAULT: "#bad8ff",
+          dark: "#68aaff"
+        },
+        hosPink: "#d30f54",
+        hosGold: "#D19D69",
+        portalBg: "#131313"
       }
     },
   },
