@@ -34,21 +34,21 @@ export default function Index() {
           href="/downloads"
           className="flex w-full items-center justify-center bg-hosPink"
         >
-          <ArrowDownTrayIcon className="max-h-[24px]" />
+          <ArrowDownTrayIcon className="h-6" />
           <span>Downloads</span>
         </ActionCard>
         <ActionCard
           href="https://blog.hentaios.com"
           className="flex w-full bg-hosPink"
         >
-          <BookOpenIcon className="max-h-[24px]" />
+          <BookOpenIcon className="h-6" />
           <span>Blog</span>
         </ActionCard>
         <ActionCard
           href="https://docs.hentaios.com"
           className="flex w-full bg-hosPink"
         >
-          <DocumentDuplicateIcon className="max-h-[24px]" />
+          <DocumentDuplicateIcon className="h-6" />
           <span>DocuWiki</span>
         </ActionCard>
       </section>
