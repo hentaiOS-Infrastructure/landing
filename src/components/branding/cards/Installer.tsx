@@ -5,7 +5,7 @@ const Installer = ({ className }: { className?: string }) => {
   return (
     <div
       className={clsx(
-        "square group relative flex w-full flex-col rounded-xl border-2 border-hosPink/25 transition-shadow md:border-hosPink md:hover:shadow-lg",
+        "square group relative flex w-full flex-col rounded-xl border-2 border-hosPink/25 transition-shadow md:border-hosPink md:hover:shadow-lg md:hover:shadow-portalBg/25",
         className
       )}
     >

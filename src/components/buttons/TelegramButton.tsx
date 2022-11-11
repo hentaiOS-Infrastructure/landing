@@ -1,16 +1,27 @@
 import type { SVGProps } from "react";
+import DistortedText from "../branding/DistortedText";
 
 type TelegramButtonProps = {
-  children: React.ReactNode;
   href: string;
 };
 
 const TelegramButton = (props: TelegramButtonProps) => {
-  const { children, href } = props;
+  const { href } = props;
   return (
-    <a href={href}>
-      <MdiTelegram /> {children}
-    </a>
+    <div>
+      <MdiTelegram className="ml-2 text-4xl text-hosPink" />
+      <a href={href} className="inline-flex flex-col text-3xl font-bold">
+        <span className="relative inline-block rounded-full bg-hosPink px-4 py-2 tracking-tighter text-white hover:bg-pink-600">
+          Join the <span className="text-transparent">Break</span>
+          <DistortedText
+            time={7}
+            className="!absolute left-32 !w-fit !cursor-pointer font-bold !text-transparent before:!z-10 before:text-neutral-600/70 after:!z-10 after:!text-cyan-400"
+          >
+            Breaking&nbsp;Bad
+          </DistortedText>
+        </span>
+      </a>
+    </div>
   );
 };
 

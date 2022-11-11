@@ -28,7 +28,7 @@ export default function ActiveLink({
   const isActive = pathToRegexp(as || href, [], {
     sensitive: true,
     end: !!exact,
-  }).test(pathname);
+  }).test(pathname ?? "");
 
   const classToAdd = isActive ? activeClassName : "";
 

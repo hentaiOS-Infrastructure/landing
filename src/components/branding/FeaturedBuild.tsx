@@ -6,8 +6,8 @@ type FeaturedBuildProps = {
 const FeaturedBuild = (props: FeaturedBuildProps) => {
   const { svgSrc, children } = props;
   return (
-    <div className="mb-20">
-      <div className="group flex flex-col rounded-xl border border-neutral-300 transition-shadow hover:shadow-lg lg:w-1/2">
+    <div className="mb-40">
+      <div className="group flex flex-col rounded-xl border border-neutral-300 transition-shadow hover:shadow-lg hover:shadow-portalBg/25 lg:w-1/2">
         <a href="#" className="px-10 py-10 md:px-20 md:py-16">
           <img
             src={svgSrc ?? "/featured-logo-default.svg"}

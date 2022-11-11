@@ -5,7 +5,7 @@ const StudentPortal = ({ className }: { className?: string }) => {
   return (
     <div
       className={clsx(
-        "square group relative flex w-full flex-col rounded-xl border-2 border-hosGold bg-portalBg transition-shadow hover:shadow-lg",
+        "square group relative flex w-full flex-col rounded-xl border-2 border-hosGold bg-portalBg transition-shadow hover:shadow-lg hover:shadow-portalBg/25",
         className
       )}
     >

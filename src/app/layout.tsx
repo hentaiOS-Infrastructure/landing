@@ -28,7 +28,7 @@ export default function RootLayout({
         }}
       >
         <RootNavbar />
-        <main className="mt-36 flex w-full justify-center px-4 md:px-8">
+        <main className="mt-36 mb-20 flex w-full justify-center overflow-x-auto px-4 md:px-8">
           <div className="flex max-w-screen-xl flex-grow flex-col justify-center">
             {children}
           </div>
