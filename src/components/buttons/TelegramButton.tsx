@@ -8,10 +8,10 @@ type TelegramButtonProps = {
 const TelegramButton = (props: TelegramButtonProps) => {
   const { href } = props;
   return (
-    <div>
+    <div className="select-none">
       <MdiTelegram className="ml-2 text-4xl text-hosPink" />
       <a href={href} className="inline-flex flex-col text-3xl font-bold">
-        <span className="relative inline-block rounded-full bg-hosPink px-4 py-2 tracking-tighter text-white hover:bg-pink-600">
+        <span className="relative inline-block rounded-tl-xl rounded-full bg-hosPink px-4 py-2 tracking-tighter text-white hover:bg-pink-600">
           Join the <span className="text-transparent">Break</span>
           <DistortedText
             time={7}

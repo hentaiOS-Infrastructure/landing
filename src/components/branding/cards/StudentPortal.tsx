@@ -20,7 +20,7 @@ const StudentPortal = ({ className }: { className?: string }) => {
           </div>
         </div>
         <div className="flex items-center rounded-xl bg-portalBg px-6">
-          <button className="my-6 max-h-fit w-fit rounded-full border-2 border-hosGold bg-transparent px-8 py-[0.35rem] text-sm font-bold tracking-tight text-hosGold transition-colors group-hover:bg-hosGold group-hover:text-white">
+          <button className="my-6 select-none max-h-fit w-fit rounded-full border-2 border-hosGold bg-transparent px-8 py-[0.35rem] text-sm font-bold tracking-tight text-hosGold transition-colors group-hover:bg-hosGold group-hover:text-white">
             Open the Student Portal
           </button>
         </div>

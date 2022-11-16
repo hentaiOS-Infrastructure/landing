@@ -4,6 +4,7 @@ import Bund from "../components/branding/Bund";
 import NavbarLink from "../components/NavbarLink";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import Link from "next/link";
 
 const navBarItems = [
   {
@@ -39,7 +40,9 @@ const RootNavbar = () => {
     >
       <div className="flex w-full max-w-screen-xl flex-row space-x-4 py-6 px-8 md:space-x-8">
         <div className="flex flex-row justify-end space-x-4 overflow-visible transition-all md:space-x-8">
-          <Bund isClosed={scrollOffset > 0} />
+          <Link href="/">
+            <Bund isClosed={scrollOffset > 0} />
+          </Link>
         </div>
       </div>
     </nav>

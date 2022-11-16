@@ -20,7 +20,7 @@ const Installer = ({ className }: { className?: string }) => {
           </div>
         </div>
         <div className="flex items-center px-6">
-          <button className="my-6 w-fit rounded-full border-2 border-hosPink bg-transparent px-8 py-[0.35rem] text-sm font-bold tracking-tight text-hosPink transition-colors md:group-hover:bg-hosPink md:group-hover:text-white">
+          <button className="select-none my-6 w-fit rounded-full border-2 border-hosPink bg-transparent px-8 py-[0.35rem] text-sm font-bold tracking-tight text-hosPink transition-colors md:group-hover:bg-hosPink md:group-hover:text-white">
             Open Flash Tool
           </button>
         </div>
