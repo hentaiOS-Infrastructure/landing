@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ const ActionCard = (props: ActionCardProps) => {
   return (
     <div
       className={clsx(
-        "group flex flex-col  text-xl text-white transition-shadow hover:shadow-lg hover:shadow-portalBg/40",
+        "group flex flex-col text-l rounded-xl text-white transition-shadow hover:shadow-lg hover:shadow-portalBg/40",
         className
       )}
     >

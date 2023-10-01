@@ -17,7 +17,10 @@ module.exports = {
         },
         hosPink: "#d30f54",
         hosGold: "#D19D69",
-        portalBg: "#131313"
+        portalBg: "#131313",
+        mediumvioletred: "#da2d89",
+        darkslategray: "#073042",
+        burlywood: "#e4ca93",
       }
     },
   },

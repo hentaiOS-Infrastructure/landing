@@ -15,19 +15,20 @@ import {
 } from "@heroicons/react/24/solid";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import PortalLore from "../components/svgBased/PortalLore";
+import UrsaBanner from "../components/branding/UrsaBanner";
 
 export default function Index() {
   return (
     <>
       <section className="mb-20">
-        <HeroBanner
+        <UrsaBanner
           title={bannerContent.heading}
           enabled={bannerContent.enabled}
         >
           {bannerContent.desc}
-        </HeroBanner>
+        </UrsaBanner>
         <FeaturedBuild>
-          hentaiOS TwistedScarlett, the latest version of hentaiOS, includes
+          hentaiOS Ursamoon, the latest version of hentaiOS, includes
           stronger protections for user privacy, improvements for developer
           productivity, and much more.
         </FeaturedBuild>
@@ -38,13 +39,6 @@ export default function Index() {
           className="mb-10 flex flex-col gap-4 md:flex-row md:gap-8 "
         >
           <ActionCard
-            href="/downloads"
-            className="flex w-full items-center justify-center bg-hosPink"
-          >
-            <ArrowDownTrayIcon className="h-6" />
-            <span>Downloads</span>
-          </ActionCard>
-          <ActionCard
             href="https://blog.hentaios.com"
             className="flex w-full bg-hosPink"
           >
@@ -52,7 +46,7 @@ export default function Index() {
             <span>Blog</span>
           </ActionCard>
           <ActionCard
-            href="https://docs.hentaios.com"
+            href="https://wiki.helluvaos.com"
             className="flex w-full bg-hosPink"
           >
             <DocumentDuplicateIcon className="h-6" />
@@ -100,13 +94,13 @@ export default function Index() {
         </p>
       </section>
       <section id="buttons" className="flex w-full flex-col items-center">
-        <TelegramButton href="#" />
+        <TelegramButton href="https://t.me/hentaiOS" />
         <div className="mt-5 grid grid-cols-1 grid-rows-2 items-center justify-center gap-2 md:grid-cols-2 md:grid-rows-1 md:flex-row">
-          <SocialButton href="#">
+          <SocialButton href="https://github.com/hentaiOS">
             <MdiGithub className="text-2xl" />
             &nbsp;GitHub
           </SocialButton>
-          <SocialButton href="#">
+          <SocialButton href="https://chan.helluvaos.com">
             <ChatBubbleLeftRightIcon className="h-6" />
             &nbsp;Community Forum
           </SocialButton>

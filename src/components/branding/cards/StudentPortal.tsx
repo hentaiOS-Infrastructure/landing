@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 import clsx from "clsx";
 
 const StudentPortal = ({ className }: { className?: string }) => {
@@ -9,7 +9,7 @@ const StudentPortal = ({ className }: { className?: string }) => {
         className
       )}
     >
-      <a href="#" className="flex h-full flex-col">
+      <a href="https://pegasus.hentaios.com" className="flex h-full flex-col">
         <div className="flex h-full grow flex-col justify-end rounded-lg bg-black  text-white">
           <div className="mt-4 flex h-full w-full bg-[url(/student_portal.svg)] bg-contain bg-bottom bg-no-repeat"></div>
           <div className="flex items-center justify-between px-8 pb-8">

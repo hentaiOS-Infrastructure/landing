@@ -1,6 +1,6 @@
 import "./globals.css";
 import RootNavbar from "./RootNavbar";
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import clsx from "clsx";
 import RootFooter from "./RootFooter";
 
