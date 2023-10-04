@@ -3,19 +3,19 @@ import Installer from "../components/branding/cards/Installer";
 import StudentPortal from "../components/branding/cards/StudentPortal";
 import DistortedText from "../components/branding/DistortedText";
 import FeaturedBuild from "../components/branding/FeaturedBuild";
-import HeroBanner from "../components/branding/HeroBanner";
 import SocialButton from "../components/buttons/SocialButton";
 import TelegramButton from "../components/buttons/TelegramButton";
 import { MdiGithub } from "../components/icons/FeatureCardIcons";
 import bannerContent from "./(content)/banner";
 import {
-  ArrowDownTrayIcon,
   DocumentDuplicateIcon,
   BookOpenIcon,
 } from "@heroicons/react/24/solid";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import PortalLore from "../components/svgBased/PortalLore";
 import UrsaBanner from "../components/branding/UrsaBanner";
+
+export const runtime = 'edge'
 
 export default function Index() {
   return (

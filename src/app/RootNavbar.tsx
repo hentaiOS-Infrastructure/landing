@@ -1,31 +1,31 @@
 "use client";
 
 import Bund from "../components/branding/Bund";
-import NavbarLink from "../components/NavbarLink";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+// import NavbarLink from "../components/NavbarLink";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
-const navBarItems = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "Downloads",
-    href: "/downloads",
-  },
-  {
-    title: "Blog",
-    href: "https://blog.hentaios.com/",
-  },
-];
+// const navBarItems = [
+//   {
+//     title: "Home",
+//     href: "/",
+//   },
+//   {
+//     title: "Downloads",
+//     href: "/downloads",
+//   },
+//   {
+//     title: "Blog",
+//     href: "https://blog.hentaios.com/",
+//   },
+// ];
 
 const RootNavbar = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrollOffset(window.pageYOffset);
+    const onScroll = () => setScrollOffset(window.scrollY);
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
