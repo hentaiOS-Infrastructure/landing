@@ -10,7 +10,7 @@ const FeaturedBuild = (props: FeaturedBuildProps) => {
   return (
     <div>
       <div className="group flex flex-col rounded-xl border border-neutral-300 transition-shadow hover:shadow-lg hover:shadow-portalBg/25 lg:w-1/2">
-        <a href="#" className="px-10 py-10 md:px-20 md:py-16">
+        <a href="https://blog.hentaios.com/android-14-release-highlight" className="px-10 py-10 md:px-20 md:py-16">
           <Image
             src={svgSrc ?? "/featured-logo-default.svg"}
             height={224}
