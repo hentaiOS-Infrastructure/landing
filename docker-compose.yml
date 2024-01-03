@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 
 services:
   landing:
@@ -10,6 +10,7 @@ services:
       - traefik.http.routers.landinghell.Rule=Host(`helluvaos.com`)
       - traefik.http.routers.landinghen.Rule=Host(`hentaios.com`)
       - traefik.docker.network=traefik_bridge
+    restart: unless-stopped
     networks:
       # add Traefik's network
       traefik_bridge:
