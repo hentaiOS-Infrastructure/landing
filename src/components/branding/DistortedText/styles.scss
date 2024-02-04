@@ -24,7 +24,7 @@
 	}
 
 	&:before {
-		clip-path: polygon(
+		clipPath: polygon(
 			0% 0%,
 			100% 0%,
 			100% var(--text-glitch-y1),
@@ -42,7 +42,7 @@
 	}
 
 	&:after {
-		clip-path: polygon(
+		clipPath: polygon(
 			0% var(--text-glitch-y1),
 			100% var(--text-glitch-y1),
 			100% var(--text-glitch-y2),

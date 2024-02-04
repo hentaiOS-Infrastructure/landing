@@ -14,7 +14,8 @@ const FeaturedBuild = (props: FeaturedBuildProps) => {
           <Image
             src={svgSrc ?? "/featured-logo-default.svg"}
             height={224}
-            width={224}
+            width={100}
+            style={{ width: 224, height: 100 }}
             className="mb-4"
             alt="Ursamoon"
           />

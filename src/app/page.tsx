@@ -1,19 +1,17 @@
 import ActionCard from "../components/branding/cards/ActionCard";
-import Installer from "../components/branding/cards/Installer";
-import StudentPortal from "../components/branding/cards/StudentPortal";
 import DistortedText from "../components/branding/DistortedText";
 import FeaturedBuild from "../components/branding/FeaturedBuild";
 import SocialButton from "../components/buttons/SocialButton";
 import TelegramButton from "../components/buttons/TelegramButton";
 import { MdiGithub } from "../components/icons/FeatureCardIcons";
 import bannerContent from "./(content)/banner";
-import {
-  DocumentDuplicateIcon,
-  BookOpenIcon,
-} from "@heroicons/react/24/solid";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import PortalLore from "../components/svgBased/PortalLore";
-import UrsaBanner from "../components/branding/UrsaBanner";
+import Blog from "../components/branding/cards/Blog";
+import { LemonSqueezyLogo, PatreonLogo } from "../components/icons/CupOfCoffees";
+import ZaFrame from "../components/branding/HelpWantedBanner";
+import Patreon from "../components/branding/cards/Patreon";
+import KnowledgeBase from "../components/branding/cards/KnowledgeBase";
 
 export const runtime = 'edge'
 
@@ -21,12 +19,12 @@ export default function Index() {
   return (
     <>
       <section className="mb-20">
-        <UrsaBanner
+        <ZaFrame
           title={bannerContent.heading}
           enabled={bannerContent.enabled}
         >
           {bannerContent.desc}
-        </UrsaBanner>
+        </ZaFrame>
         <FeaturedBuild>
           hentaiOS Ursamoon, the latest version of hentaiOS, includes
           stronger protections for user privacy, improvements for developer
@@ -39,26 +37,28 @@ export default function Index() {
           className="mb-10 flex flex-col gap-4 md:flex-row md:gap-8 "
         >
           <ActionCard
-            href="https://blog.hentaios.com"
-            className="flex w-full bg-hosPink"
+            href="https:/get.hentaios.com/enroll"
+            className="flex w-full border border-neutral-300"
           >
-            <BookOpenIcon className="h-6" />
-            <span>Blog</span>
+            <PatreonLogo />
+            <span>Enroll to Patreon Early Access!</span>
           </ActionCard>
           <ActionCard
-            href="https://wiki.helluvaos.com"
-            className="flex w-full bg-hosPink"
+            href="https://cup-of-coffee.helluvaos.com"
+            className="flex w-full border border-neutral-300"
           >
-            <DocumentDuplicateIcon className="h-6" />
-            <span>DocuWiki</span>
+            <LemonSqueezyLogo />
+            <span>Cup Of Coffee</span>
           </ActionCard>
         </div>
         <div
           id="hero"
           className="mb-40 grid grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1 md:gap-8"
         >
-          <Installer />
-          <StudentPortal />
+          <Patreon />
+          <Blog />
+          <KnowledgeBase />
+          {/* <StudentPortal /> */}
         </div>
       </section>
       <section

@@ -13,17 +13,17 @@ const ActionCard = (props: ActionCardProps) => {
   return (
     <div
       className={clsx(
-        "group flex flex-col text-l rounded-xl text-white transition-shadow hover:shadow-lg hover:shadow-portalBg/40",
+        "group flex flex-col text-l font-medium tracking-tight rounded-full text-gray-900 transition-shadow hover:shadow-lg hover:shadow-portalBg/40",
         className
       )}
     >
       {isExternal ? (
-        <a href={href} className="h-full w-full py-6 px-4">
-          <div className="flex items-center gap-2">{children}</div>
+        <a href={href} className="h-full w-full py-6 px-5">
+          <div className="flex items-center gap-3">{children}</div>
         </a>
       ) : (
-        <Link href={href} className="h-full w-full py-6 px-4">
-          <div className="flex items-center gap-2">{children}</div>
+        <Link href={href} className="h-full w-full py-6 px-5">
+          <div className="flex items-center gap-3">{children}</div>
         </Link>
       )}
     </div>
