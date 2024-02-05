@@ -14,6 +14,14 @@ import Patreon from "../components/branding/cards/Patreon";
 import KnowledgeBase from "../components/branding/cards/KnowledgeBase";
 
 export const runtime = 'edge'
+export const metadata = {
+  metadataBase: new URL('https://hentaios.com'),
+  title: 'The hentaiOS Project',
+  openGraph: {
+    title: 'The hentaiOS Project',
+    description: 'Sussy Baka Impostor.',
+  },
+}
 
 export default function Index() {
   return (
