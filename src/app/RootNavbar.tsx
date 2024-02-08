@@ -1,25 +1,21 @@
 "use client";
 
 import Bund from "../components/branding/Bund";
-// import NavbarLink from "../components/NavbarLink";
+import NavbarLink from "../components/NavbarLink";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
-// const navBarItems = [
-//   {
-//     title: "Home",
-//     href: "/",
-//   },
-//   {
-//     title: "Downloads",
-//     href: "/downloads",
-//   },
-//   {
-//     title: "Blog",
-//     href: "https://blog.hentaios.com/",
-//   },
-// ];
+const navBarItems = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Blog",
+    href: "https://blog.hentaios.com/",
+  },
+];
 
 const RootNavbar = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -38,11 +34,19 @@ const RootNavbar = () => {
         scrollOffset > 0 ? "max-h-20 !border-neutral-200/60" : "max-h-60"
       )}
     >
-      <div className="flex w-full max-w-screen-xl flex-row space-x-4 py-6 px-8 md:space-x-8">
+      <div className="flex justify-between w-full max-w-screen-xl flex-row space-x-4 py-6 px-8 md:space-x-8">
         <div className="flex flex-row justify-end space-x-4 overflow-visible transition-all md:space-x-8">
           <Link href="/">
             <Bund isClosed={scrollOffset > 0} />
           </Link>
+        </div>
+        <div className="flex flex-row space-x-4 overflow-visible transition-all md:space-x-8">
+          {/* Add navbar items here */}
+          {navBarItems.map((item, index) => (
+            <NavbarLink key={index} href={item.href}>
+              {item.title}
+            </NavbarLink>
+          ))}
         </div>
       </div>
     </nav>
