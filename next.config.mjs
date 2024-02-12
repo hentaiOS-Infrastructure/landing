@@ -14,5 +14,9 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    // Ref: https://github.com/vercel/next.js/issues/54482
+    unoptimized: true,
+  },
 };
 export default config;
