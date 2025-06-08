@@ -11,11 +11,11 @@ const RootFooter = () => {
       <BottomTextUpper className="mb-10 mt-20 h-32 max-w-[75vw]" />
       <BottomTextLower className="mb-20 h-20" />
       <div className="flex w-full items-center justify-center bg-neutral-200 py-8">
-        <div className="flex w-full max-w-screen-xl items-center justify-center">
+        <div className="flex w-full max-w-(--breakpoint-xl) items-center justify-center">
           <div className="grid w-full grid-cols-1 justify-center gap-4 px-8 md:grid-cols-2 md:gap-12">
             <section>
               <h3 className="font-bold">Unrelated resources</h3>
-              <div className="mt-2 h-[1px] w-full bg-neutral-400"></div>
+              <div className="mt-2 h-px w-full bg-neutral-400"></div>
               <ul className="my-4">
                 {footerLinks.map((link, index) => (
                   <li key={index}>

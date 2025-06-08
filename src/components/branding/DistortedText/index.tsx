@@ -9,18 +9,19 @@ interface DistortedTextProps extends ComponentPropsWithRef<"span"> {
 }
 
 const DistortedText = (props: DistortedTextProps) => {
-  const { children, className, time, color1, color2 } = props;
+  const { children, className, time, color1, color2, style: propStyle, ...rest } = props;
   const timeVar = time ?? 10;
-  const style = {
+  const componentStyle = {
     "--text-glitch-time": `${timeVar}s`,
-    "--text-color1": color1 ?? "rgb(239 68 68 / 0.5)",
-    "--text-color2": color2 ?? "rgb(255 68 68 / 0.75)",
+    "--text-color1": color1 ?? "var(--default-glitch-color1)",
+    "--text-color2": color2 ?? "var(--default-glitch-color2)",
   } as React.CSSProperties;
   return (
     <span
       className={clsx("text-glitch", className)}
       data-text={children}
-      style={style}
+      style={{ ...componentStyle, ...propStyle }}
+      {...rest}
     >
       {children}
     </span>

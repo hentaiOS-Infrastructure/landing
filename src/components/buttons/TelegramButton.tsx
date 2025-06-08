@@ -15,7 +15,7 @@ const TelegramButton = (props: TelegramButtonProps) => {
           Join the <span className="text-transparent">Break</span>
           <DistortedText
             time={7}
-            className="!absolute left-32 !w-fit !cursor-pointer font-bold !text-transparent before:!z-10 before:text-neutral-600/70 after:!z-10 after:!text-cyan-400"
+            className="!absolute left-32 w-fit! cursor-pointer! font-bold text-transparent! before:z-10! before:text-neutral-600/70 after:z-10! after:text-cyan-400!"
           >
             Breaking&nbsp;Bad
           </DistortedText>

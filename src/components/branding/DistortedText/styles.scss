@@ -24,34 +24,30 @@
 	}
 
 	&:before {
-		clipPath: polygon(
-			0% 0%,
-			100% 0%,
-			100% var(--text-glitch-y1),
-			0% var(--text-glitch-y1),
-			0% var(--text-glitch-y2),
-			100% var(--text-glitch-y2),
-			100% var(--text-glitch-y3),
-			0% var(--text-glitch-y3),
-			0% var(--text-glitch-y4),
-			100% var(--text-glitch-y4),
-			100% 100%,
-			0% 100%
-		);
+		clipPath: polygon(0% 0%,
+				100% 0%,
+				100% var(--text-glitch-y1),
+				0% var(--text-glitch-y1),
+				0% var(--text-glitch-y2),
+				100% var(--text-glitch-y2),
+				100% var(--text-glitch-y3),
+				0% var(--text-glitch-y3),
+				0% var(--text-glitch-y4),
+				100% var(--text-glitch-y4),
+				100% 100%,
+				0% 100%);
 		text-shadow: 5px 0 var(--text-color1);
 	}
 
 	&:after {
-		clipPath: polygon(
-			0% var(--text-glitch-y1),
-			100% var(--text-glitch-y1),
-			100% var(--text-glitch-y2),
-			0% var(--text-glitch-y2),
-			0% var(--text-glitch-y3),
-			100% var(--text-glitch-y3),
-			100% var(--text-glitch-y4),
-			0% var(--text-glitch-y4)
-		);
+		clipPath: polygon(0% var(--text-glitch-y1),
+				100% var(--text-glitch-y1),
+				100% var(--text-glitch-y2),
+				0% var(--text-glitch-y2),
+				0% var(--text-glitch-y3),
+				100% var(--text-glitch-y3),
+				100% var(--text-glitch-y4),
+				0% var(--text-glitch-y4));
 		text-shadow: -5px 0 var(--text-color2);
 	}
 }

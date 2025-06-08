@@ -1,6 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+/* Correct import for Tailwind v4 */
+
+@theme {
+  /* Define theme colors as CSS variables for Tailwind v4 */
+  --color-hosPink: #d30f54;
+  --color-hosGold: #D19D69;
+  --color-portalBg: #131313;
+  --color-mediumvioletred: #da2d89;
+  --color-darkslategray: #073042;
+  --color-burlywood: #e4ca93;
+  --color-cold: #bad8ff;
+  --color-cold-dark: #68aaff;
+  --color-white: #fff;
+  /* Added white color variable */
+}
+
+:root {
+  /* Original CSS variables - some may be redundant if @theme is fully adopted */
+  /* These are kept for now as they might be used by non-Tailwind CSS or JS */
+  --hosPink: #d30f54;
+  --hosGold: #D19D69;
+  --portalBg: #131313;
+  --mediumvioletred: #da2d89;
+  --darkslategray: #073042;
+  --burlywood: #e4ca93;
+  --cold: #bad8ff;
+  --cold-dark: #68aaff;
+
+  /* Default glitch colors */
+  --default-glitch-color1: #ef444480;
+  /* Red with 50% alpha */
+  --default-glitch-color2: #ef4444c0;
+  /* Red with 75% alpha */
+
+  /* Specific glitch colors derived from theme colors */
+  --hosPink-glitch1: #d30f5480;
+  --hosPink-glitch2: #d30f54c0;
+  --hosGold-glitch1: #D19D6980;
+  --hosGold-glitch2: #D19D69c0;
+  --mediumvioletred-glitch1: #da2d8980;
+  --mediumvioletred-glitch2: #da2d89c0;
+
+  --darkslategray-glitch1: #07304280;
+  --darkslategray-glitch2: #073042c0;
+  --cold-dark-glitch1: #68aaff80;
+  --cold-dark-glitch2: #68aaffc0;
+  /* Add others as needed */
+}
+
+@layer components {
+  .navbar-item-active {
+    /* Active button styles */
+    @apply font-bold bg-(--color-hosPink) text-(--color-white);
+    /* Ensure no hover effect overrides active state if it's stronger */
+    /* Or define specific hover for active: e.g. hover:bg-(--color-hosPink-darker) */
+  }
+}
 
 .animate-bund-flag-expand {
   transform: scaleY(0.365);

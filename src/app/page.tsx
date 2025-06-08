@@ -71,11 +71,15 @@ export default function Index() {
       </section>
       <section
         id="JOINTHECULT"
-        className="mx-auto mb-10 flex max-w-[90%] flex-col items-center space-y-2"
+        className="mx-auto mb-10 flex max-w-[90%] flex-col items-center space-y-[-10px]"
       >
-        <p className="text-center text-3xl font-medium leading-normal tracking-tighter text-hosPink md:text-4xl">
+        <p className="text-center text-3xl font-medium leading-normal tracking-tighter text-(--color-hosPink) md:text-4xl">
           Leave your boring life, Join us in the{" "}
-          <DistortedText className="font-bold !text-red-800 before:text-red-700 after:text-red-700">
+          <DistortedText
+            className="font-bold text-(--color-hosPink)"
+            color1="var(--hosPink-glitch1)"
+            color2="var(--hosPink-glitch2)"
+          >
             bloody
           </DistortedText>{" "}
           school.
@@ -84,14 +88,18 @@ export default function Index() {
           You’ll not regret it, unlike what{" "}
           <DistortedText
             time={5}
-            className="font-bold !text-indigo-800 before:text-indigo-600 after:text-indigo-600"
+            className="font-bold text-(--color-darkslategray)"
+            color1="var(--darkslategray-glitch1)"
+            color2="var(--darkslategray-glitch2)"
           >
             XDA
           </DistortedText>{" "}
           or{" "}
           <DistortedText
             time={7}
-            className="font-bold !text-cyan-700 before:text-cyan-600 after:text-cyan-600"
+            className="font-bold text-(--color-cold-dark)"
+            color1="var(--cold-dark-glitch1)"
+            color2="var(--cold-dark-glitch2)"
           >
             Xiaomeme
           </DistortedText>{" "}
