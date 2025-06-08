@@ -8,12 +8,7 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  // swcMinify: true,
   output: "standalone",
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
   images: {
     // Ref: https://github.com/vercel/next.js/issues/54482
     unoptimized: true,
