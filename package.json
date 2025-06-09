@@ -10,15 +10,22 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@payloadcms/db-mongodb": "^3.41.0",
+    "@payloadcms/next": "^3.41.0",
+    "@payloadcms/richtext-lexical": "^3.41.0",
+    "@payloadcms/richtext-slate": "^3.41.0",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "graphql": "^16.11.0",
     "next": "^15.3.3",
     "path-to-regexp": "^8.2.0",
+    "payload": "^3.41.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "sharp": "^0.34.2",
     "zod": "^3.25.56"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.12",
     "@tailwindcss/postcss": "latest",
     "@types/node": "22.15.30",
     "@types/react": "19.1.6",
@@ -34,8 +41,7 @@
     "sass": "^1.89.1",
     "tailwindcss": "latest",
     "typescript": "^5.8.3",
-    "vercel": "^42.3.0",
-    "wrangler": "^4.19.1"
+    "vercel": "^42.3.0"
   },
   "ct3aMetadata": {
     "initVersion": "6.6.0"

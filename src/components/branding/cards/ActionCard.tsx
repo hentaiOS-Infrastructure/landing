@@ -22,7 +22,7 @@ const ActionCard = (props: ActionCardProps) => {
           <div className="flex items-center gap-3">{children}</div>
         </a>
       ) : (
-        <Link href={href} className="h-full w-full py-6 px-5">
+        <Link href={href} className="h-full w-full py-6 px-5" legacyBehavior>
           <div className="flex items-center gap-3">{children}</div>
         </Link>
       )}

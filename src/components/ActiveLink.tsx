@@ -13,6 +13,7 @@ interface NavLinkProps {
   activeClassName: string;
   className: string;
   children: React.ReactNode;
+  target?: string; // Added target prop
 }
 
 export default function ActiveLink({
@@ -22,6 +23,7 @@ export default function ActiveLink({
   activeClassName,
   children,
   className,
+  target, // Destructure target
   ...props
 }: NavLinkProps) {
   const pathname = usePathname();
@@ -38,12 +40,8 @@ export default function ActiveLink({
   );
 
   return (
-    <Link
-      href={href}
-      as={as}
-      {...props}
-      className={finalClassName}
-    >
+    <Link href={href} as={as} {...props} className={finalClassName} target={target}>
+      {/* legacyBehavior removed, Link will render the <a> tag */}
       {children}
     </Link>
   );

@@ -1,10 +1,13 @@
 import "./globals.css";
-import RootNavbar from "./RootNavbar";
 import { Inter } from "next/font/google";
 import clsx from "clsx";
-import RootFooter from "./RootFooter";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = {
+  title: "helluvaOS",
+  description: "The hentaiOS Project", // You can refine this
+};
 
 export default function RootLayout({
   children,
@@ -12,28 +15,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en">
       <head>
-        <title>helluvaOS</title>
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
       </head>
       <body
-        className={clsx(
-          "min-h-screen overscroll-x-none bg-neutral-50",
-          inter.className
-        )}
+        className={`min-h-screen overscroll-x-none bg-neutral-50 ${inter.className}`}
         style={{
           textRendering: "optimizeLegibility",
         }}
       >
-        <RootNavbar />
-        <main className="mt-36 mb-20 flex w-full justify-center overflow-x-auto px-4 md:px-8">
-          <div className="flex max-w-(--breakpoint-xl) grow flex-col justify-center">
-            {children}
-          </div>
-        </main>
-        <RootFooter />
+        {children}
       </body>
     </html>
   );
