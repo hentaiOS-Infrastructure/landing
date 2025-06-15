@@ -81,7 +81,7 @@ const RootFooter = async () => {
             <section className="flex flex-col items-start md:items-end">
               <ThryobriaIcon className="h-20 w-auto mb-4" />
               <div className="text-sm text-neutral-700 md:text-right">
-                <p>© The hentaiOS Project</p>
+                <p>© The helluvaOS Project</p>
                 <p>Property of the Red Winter Federal Academy</p>
                 <p>Proudly developed in Thryobria.</p>
               </div>
@@ -90,7 +90,7 @@ const RootFooter = async () => {
           </div>
           <div className="mt-8 pt-8 border-t border-neutral-300 text-center md:text-left md:col-span-2"> {/* Positioned below first two columns */}
             <p className="text-sm text-neutral-600">
-              Built by cunnies at hentaiOS Design Team and Rev{" "}
+              Built by cunnies at helluvaOS Design Team and Rev{" "}
               <span className="line-through">Says Desu</span>.
               <br />A Thryobria Tower Incubator Project.
             </p>

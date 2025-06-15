@@ -13,14 +13,15 @@ import { LemonSqueezyLogo, PatreonLogo } from "../../components/icons/CupOfCoffe
 import clsx from "clsx"; // Added clsx import
 import ZaFrame from "../../components/branding/HelpWantedBanner";
 import Patreon from "../../components/branding/cards/Patreon";
+import { RefreshRouteOnSave } from "../../components/RefreshRouteOnSave";
 
 
 export const runtime = 'edge'
 export const metadata = {
   metadataBase: new URL('https://hentaios.com'),
-  title: 'The hentaiOS Project',
+  title: 'The helluvaOS Project',
   openGraph: {
-    title: 'The hentaiOS Project',
+    title: 'The helluvaOS Project',
     description: 'Sussy Baka Impostor.',
   },
 }
@@ -51,8 +52,6 @@ interface FeaturedBuildData {
   // Add other fields from your collection if needed
 }
 
-// Updated ContentCardData to include cardIcon and remove iconType
-// Updated ContentCardData to include cardIcon and remove iconType
 // Updated ContentCardData to include cardIcon and remove iconType
 interface ContentCardData extends Omit<PageContentCardData, 'className' | 'cardIcon'> {
   id: string; // Added id field
@@ -130,6 +129,7 @@ export default async function Index() {
 
   return (
     <>
+      <RefreshRouteOnSave />
       <section className="mb-20">
         {mainBannerData && mainBannerData.enabled && (
           <ZaFrame
@@ -263,13 +263,13 @@ export default async function Index() {
         </p>
       </section>
       <section id="buttons" className="flex w-full flex-col items-center">
-        <TelegramButton href="https://t.me/hentaiOS" />
+        <TelegramButton href="https://t.me/helluvaOS" />
         <div className="mt-5 grid grid-cols-1 grid-rows-2 items-center justify-center gap-2 md:grid-cols-2 md:grid-rows-1 md:flex-row">
-          <SocialButton href="https://github.com/hentaiOS">
+          <SocialButton href="https://github.com/helluvaOS">
             <MdiGithub className="text-2xl" />
             &nbsp;GitHub
           </SocialButton>
-          <SocialButton href="https://chan.helluvaos.com">
+          <SocialButton href="https://t.me/helluvaOS">
             <ChatBubbleLeftRightIcon className="h-6" />
             &nbsp;Community Forum
           </SocialButton>

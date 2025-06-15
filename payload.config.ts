@@ -2,7 +2,37 @@ import sharp from 'sharp'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig, CollectionConfig } from 'payload'
+import { seoPlugin } from '@payloadcms/plugin-seo'
+import { UsersIcon } from '@heroicons/react/24/outline'
+
 // Removed import { CollectionConfig } from 'payload/types';
+
+const Pages: CollectionConfig = {
+  slug: 'pages',
+  admin: {
+    useAsTitle: 'title',
+    livePreview: {
+      url: process.env.NEXT_PUBLIC_SERVER_URL,
+    },
+  },
+  fields: [
+    {
+      name: 'title',
+      type: 'text',
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'content',
+      type: 'richText',
+    },
+  ],
+}
 
 const FeaturedBuilds: CollectionConfig = {
   slug: 'featured-builds',
@@ -339,7 +369,7 @@ export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
   // Define and configure your collections in this array
-  collections: [FeaturedBuilds, Media, ContentCards, Banners, NavigationLinks], // Added NavigationLinks
+  collections: [Pages, FeaturedBuilds, Media, ContentCards, Banners, NavigationLinks], // Added NavigationLinks
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
   // Whichever Database Adapter you're using should go here
@@ -347,6 +377,19 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
+  admin: {
+    importMap: {
+      baseDir: "@", // use whatever your Next.js src/ alias is set to
+    },
+  },
+  plugins: [
+    seoPlugin({
+      collections: ['pages', 'featured-builds', 'content-cards', 'banners'],
+      uploadsCollection: 'media',
+      generateTitle: ({ doc }) => `The helluvaOS Project | ${doc?.meta?.title?.value ?? ''}`,
+      generateURL: ({ doc }) => `https://helluvaOS.com/${doc?.slug?.value ?? ''}`,
+    }),
+  ],
   // If you want to resize images, crop, set focal point, etc.
   // make sure to install it and pass it to the config.
   // This is optional - if you don't need to do these things,

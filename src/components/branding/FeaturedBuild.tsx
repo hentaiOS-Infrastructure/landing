@@ -1,7 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { RichText } from "@payloadcms/richtext-lexical/react";
-import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import clsx from "clsx"; // Import clsx for conditional classes
 
 // Define a type for the image object from Payload
@@ -20,7 +18,7 @@ interface PayloadMedia {
 
 type FeaturedBuildProps = {
   image?: PayloadMedia;
-  description: SerializedEditorState | any; // Effectively required for this component
+  description: any; // Effectively required for this component
   buttonLink: string;
   buttonText: string; // Effectively required for this component
   layoutMode?: "single" | "default";
@@ -77,7 +75,7 @@ const FeaturedBuild = (props: FeaturedBuildProps) => {
           )}>
             {/* Description is now expected to be present for this component */}
             <div className={clsx("mb-6 font-medium tracking-tight", isSingleMode ? "md:text-left" : "")}>
-              <RichText data={description} />
+              <div>{description}</div>
             </div>
             {/* ButtonText is now expected to be present for this component */}
             <button className={clsx(

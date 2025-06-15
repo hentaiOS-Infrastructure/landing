@@ -16,7 +16,7 @@ const Installer = ({ className }: { className?: string }) => {
             <h3 className="mt-4 text-3xl font-medium tracking-tight">
               Flash Tool
             </h3>
-            <p>Update or install hentaiOS onto your phone.</p>
+            <p>Update or install helluvaOS onto your phone.</p>
           </div>
         </div>
         <div className="flex items-center px-6">

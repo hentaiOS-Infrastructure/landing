@@ -1,33 +1,18 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import clsx from "clsx";
+import './globals.css'
+import { Inter } from 'next/font/google'
+import { ConditionalLayout } from './ConditionalLayout'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "helluvaOS",
-  description: "The hentaiOS Project", // You can refine this
-};
+  title: 'helluvaOS',
+  description: 'The helluvaOS Project', // You can refine this
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-      </head>
-      <body
-        className={`min-h-screen overscroll-x-none bg-neutral-50 ${inter.className}`}
-        style={{
-          textRendering: "optimizeLegibility",
-        }}
-      >
-        {children}
-      </body>
-    </html>
-  );
+    <ConditionalLayout interClassName={inter.className}>
+      {children}
+    </ConditionalLayout>
+  )
 }

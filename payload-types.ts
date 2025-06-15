@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    pages: Page;
     'featured-builds': FeaturedBuild;
     media: Media;
     'content-cards': ContentCard;
@@ -79,6 +80,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    pages: PagesSelect<false> | PagesSelect<true>;
     'featured-builds': FeaturedBuildsSelect<false> | FeaturedBuildsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'content-cards': ContentCardsSelect<false> | ContentCardsSelect<true>;
@@ -123,17 +125,13 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "featured-builds".
+ * via the `definition` "pages".
  */
-export interface FeaturedBuild {
+export interface Page {
   id: string;
-  title: string;
-  image: string | Media;
-  /**
-   * If checked, this build will display as a full image link, hiding description and button.
-   */
-  isFullImageHighlight: boolean;
-  description?: {
+  title?: string | null;
+  slug?: string | null;
+  content?: {
     root: {
       type: string;
       children: {
@@ -148,8 +146,14 @@ export interface FeaturedBuild {
     };
     [k: string]: unknown;
   } | null;
-  buttonLink: string;
-  buttonText?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -208,6 +212,46 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "featured-builds".
+ */
+export interface FeaturedBuild {
+  id: string;
+  title: string;
+  image: string | Media;
+  /**
+   * If checked, this build will display as a full image link, hiding description and button.
+   */
+  isFullImageHighlight: boolean;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  buttonLink: string;
+  buttonText?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "content-cards".
  */
 export interface ContentCard {
@@ -244,6 +288,14 @@ export interface ContentCard {
    * A number to determine the display order. Lower numbers appear first.
    */
   sortOrder?: number | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -268,6 +320,14 @@ export interface Banner {
    * If provided, the banner image will be a link to this URL.
    */
   linkURL?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -321,6 +381,10 @@ export interface User {
 export interface PayloadLockedDocument {
   id: string;
   document?:
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
     | ({
         relationTo: 'featured-builds';
         value: string | FeaturedBuild;
@@ -389,6 +453,24 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  content?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "featured-builds_select".
  */
 export interface FeaturedBuildsSelect<T extends boolean = true> {
@@ -398,6 +480,13 @@ export interface FeaturedBuildsSelect<T extends boolean = true> {
   description?: T;
   buttonLink?: T;
   buttonText?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -479,6 +568,13 @@ export interface ContentCardsSelect<T extends boolean = true> {
   borderColorClass?: T;
   buttonCustomClasses?: T;
   sortOrder?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -493,6 +589,13 @@ export interface BannersSelect<T extends boolean = true> {
   description?: T;
   bannerImage?: T;
   linkURL?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
