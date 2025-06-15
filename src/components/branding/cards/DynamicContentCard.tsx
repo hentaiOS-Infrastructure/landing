@@ -67,6 +67,7 @@ const DynamicContentCard: React.FC<DynamicCardData> = ({
                                 fill // Replaces layout="fill"
                                 // objectFit="contain" // Use className instead
                                 className="object-contain" // Added object-contain
+                                priority
                             />
                         </div>
                     )}

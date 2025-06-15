@@ -195,6 +195,15 @@ const ContentCards: CollectionConfig = {
         description: 'Optional icon to display at the top of the card.',
       },
     },
+    {
+      name: 'backgroundImage',
+      label: 'Background Image (Optional)',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Optional background image for the card.',
+      },
+    },
     // Optional styling fields - can be expanded
     {
       name: 'backgroundColorClass',
@@ -365,11 +374,53 @@ const NavigationLinks: CollectionConfig = {
   ],
 };
 
+const ActionCards: CollectionConfig = {
+  slug: 'action-cards',
+  admin: {
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'href', 'order', 'updatedAt'],
+    description: 'Manage small action cards with an icon and a link.',
+  },
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'title',
+      type: 'text',
+      label: 'Link Title',
+      required: true,
+    },
+    {
+      name: 'href',
+      type: 'text',
+      label: 'Link URL (href)',
+      required: true,
+    },
+    {
+      name: 'icon',
+      label: 'Icon (Optional)',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'order',
+      type: 'number',
+      label: 'Sort Order',
+      admin: {
+        position: 'sidebar',
+        description: 'A number to determine the display order. Lower numbers appear first.',
+      },
+      defaultValue: 0,
+    },
+  ],
+};
+
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
   // Define and configure your collections in this array
-  collections: [Pages, FeaturedBuilds, Media, ContentCards, Banners, NavigationLinks], // Added NavigationLinks
+  collections: [Pages, FeaturedBuilds, Media, ContentCards, Banners, NavigationLinks, ActionCards], // Added ActionCards
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
   // Whichever Database Adapter you're using should go here

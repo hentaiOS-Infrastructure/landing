@@ -12,7 +12,7 @@ import FeaturedBuildHighlight from "../../components/branding/FeaturedBuildHighl
 import { LemonSqueezyLogo, PatreonLogo } from "../../components/icons/CupOfCoffees";
 import clsx from "clsx"; // Added clsx import
 import ZaFrame from "../../components/branding/HelpWantedBanner";
-import Patreon from "../../components/branding/cards/Patreon";
+import CustomPatreonCard from "../../components/branding/cards/CustomPatreonCard";
 import { RefreshRouteOnSave } from "../../components/RefreshRouteOnSave";
 
 
@@ -181,26 +181,14 @@ export default async function Index() {
           id="actions"
           className="mb-10 flex flex-col gap-4 md:flex-row md:gap-8 "
         >
-          <ActionCard
-            href="https:/get.hentaios.com/enroll"
-            className="flex w-full border border-neutral-300"
-          >
-            <PatreonLogo />
-            <span>Enroll to Patreon Early Access!</span>
-          </ActionCard>
-          <ActionCard
-            href="https://cup-of-coffee.helluvaos.com"
-            className="flex w-full border border-neutral-300"
-          >
-            <LemonSqueezyLogo />
-            <span>Cup Of Coffee</span>
-          </ActionCard>
+          <ActionCard />
         </div>
         <div
           id="hero"
           className="mb-40 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8" // Adjusted grid for dynamic cards
         >
-          <Patreon />
+          <CustomPatreonCard cardIdentifier="patreon" />
+          <CustomPatreonCard cardIdentifier="cup-of-coffee" />
           {allContentCards && allContentCards.length > 0 ? (
             allContentCards.map((card) => (
               <DynamicContentCard
@@ -227,36 +215,37 @@ export default async function Index() {
         className="mx-auto mb-10 flex max-w-[90%] flex-col items-center space-y-[-10px]"
       >
         <p className="text-center text-3xl font-medium leading-normal tracking-tighter text-(--color-hosPink) md:text-4xl">
-          Leave your boring life, Join us in the{" "}
+          Loophole is{" "}
           <DistortedText
             className="font-bold text-(--color-hosPink)"
             color1="var(--hosPink-glitch1)"
             color2="var(--hosPink-glitch2)"
           >
-            bloody
+            closed
           </DistortedText>{" "}
-          school.
+          🥀
         </p>
         <p className="max-w-full text-center text-3xl font-medium leading-normal tracking-tighter text-neutral-400 md:text-4xl">
-          You’ll not regret it, unlike what{" "}
+          This{" "}
           <DistortedText
             time={5}
             className="font-bold text-(--color-darkslategray)"
             color1="var(--darkslategray-glitch1)"
             color2="var(--darkslategray-glitch2)"
           >
-            XDA
+            Pixel 10 Pro is part of loophole.closed track
           </DistortedText>{" "}
-          or{" "}
+        </p>
+        <p className="max-w-full text-center text-3xl font-medium leading-normal tracking-tighter text-neutral-400 md:text-4xl">
+          Google (don't wanna) say that{" "}
           <DistortedText
             time={7}
             className="font-bold text-(--color-cold-dark)"
             color1="var(--cold-dark-glitch1)"
             color2="var(--cold-dark-glitch2)"
           >
-            Xiaomeme
+            AOSP become Read-Only
           </DistortedText>{" "}
-          said.
         </p>
         <p className="max-w-full text-center text-3xl font-medium leading-normal tracking-tighter text-neutral-400 md:text-4xl">
           Also watch Otokonoko Delivery.

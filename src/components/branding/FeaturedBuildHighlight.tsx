@@ -37,6 +37,7 @@ const FeaturedBuildHighlight: React.FC<FeaturedBuildHighlightProps> = ({
                     src={imageUrl}
                     alt={image.alt ?? "Highlight image"}
                     fill
+                    priority
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
             </Link>

@@ -73,6 +73,7 @@ export interface Config {
     'content-cards': ContentCard;
     banners: Banner;
     'nav-links': NavLink;
+    'action-cards': ActionCard;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     'content-cards': ContentCardsSelect<false> | ContentCardsSelect<true>;
     banners: BannersSelect<false> | BannersSelect<true>;
     'nav-links': NavLinksSelect<false> | NavLinksSelect<true>;
+    'action-cards': ActionCardsSelect<false> | ActionCardsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -269,6 +271,10 @@ export interface ContentCard {
    */
   cardIcon?: (string | null) | Media;
   /**
+   * Optional background image for the card.
+   */
+  backgroundImage?: (string | null) | Media;
+  /**
    * Tailwind CSS class for the card background.
    */
   backgroundColorClass?: string | null;
@@ -358,6 +364,24 @@ export interface NavLink {
   createdAt: string;
 }
 /**
+ * Manage small action cards with an icon and a link.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "action-cards".
+ */
+export interface ActionCard {
+  id: string;
+  title: string;
+  href: string;
+  icon?: (string | null) | Media;
+  /**
+   * A number to determine the display order. Lower numbers appear first.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -404,6 +428,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'nav-links';
         value: string | NavLink;
+      } | null)
+    | ({
+        relationTo: 'action-cards';
+        value: string | ActionCard;
       } | null)
     | ({
         relationTo: 'users';
@@ -563,6 +591,7 @@ export interface ContentCardsSelect<T extends boolean = true> {
   buttonText?: T;
   buttonLink?: T;
   cardIcon?: T;
+  backgroundImage?: T;
   backgroundColorClass?: T;
   textColorClass?: T;
   borderColorClass?: T;
@@ -610,6 +639,18 @@ export interface NavLinksSelect<T extends boolean = true> {
   order?: T;
   openInNewTab?: T;
   isColumnHeader?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "action-cards_select".
+ */
+export interface ActionCardsSelect<T extends boolean = true> {
+  title?: T;
+  href?: T;
+  icon?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
