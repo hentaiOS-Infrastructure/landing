@@ -3,7 +3,6 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig, CollectionConfig } from 'payload'
 import { seoPlugin } from '@payloadcms/plugin-seo'
-import { UsersIcon } from '@heroicons/react/24/outline'
 
 // Removed import { CollectionConfig } from 'payload/types';
 

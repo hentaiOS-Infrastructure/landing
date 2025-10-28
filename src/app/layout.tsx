@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { ConditionalLayout } from './ConditionalLayout'
+import { SpeculationRules } from '../components/SpeculationRules'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ConditionalLayout interClassName={inter.className}>
       {children}
+      <SpeculationRules />
     </ConditionalLayout>
   )
 }
