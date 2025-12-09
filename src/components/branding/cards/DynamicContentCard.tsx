@@ -13,7 +13,12 @@ interface PayloadMedia {
     width?: number;
     height?: number;
     // Add 'sizes' if you have imageSizes configured and want to use them
-    // sizes?: { thumbnail?: { url?: string }; /* other sizes */ };
+    sizes?: {
+        icon?: {
+            url?: string;
+        }
+        thumbnail?: { url?: string }; /* other sizes */
+    };
 }
 
 export interface DynamicCardData {
@@ -56,25 +61,26 @@ const DynamicContentCard: React.FC<DynamicCardData> = ({
                         "flex flex-col justify-start rounded-t-lg",
                         backgroundColorClass,
                         textColorClass,
-                        "flex-grow p-8"
+                        "grow p-8"
                     )}
                 >
                     {cardIcon?.url && (
-                        <div className="mb-4 h-[42px] w-[190px] relative"> {/* Adjust size as needed or make dynamic */}
+                        <div className="mb-4 h-[47px] w-[194px] relative">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_PAYLOAD_URL || ''}${cardIcon.url}`}
-                                alt={cardIcon.alt || title} // Fallback to title for alt text
-                                fill // Replaces layout="fill"
-                                // objectFit="contain" // Use className instead
-                                className="object-contain" // Added object-contain
+                                src={`${process.env.NEXT_PUBLIC_PAYLOAD_URL || ''}${cardIcon.sizes?.icon?.url || cardIcon.url}`}
+                                alt={cardIcon.alt || title}
+                                fill
+                                className="object-contain"
                                 priority
-                            />
+                                style={{
+                                    maxWidth: "100%",
+                                }} />
                         </div>
                     )}
                     <h3 className="mt-4 text-3xl font-medium tracking-tight">
                         {title}
                     </h3>
-                    <p className="mt-2 tracking-tight flex-grow">
+                    <p className="mt-2 tracking-tight grow">
                         {description}
                     </p>
                 </div>

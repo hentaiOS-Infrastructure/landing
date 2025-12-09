@@ -57,13 +57,21 @@ const RootNavbar = () => {
         scrollOffset > 0 ? "max-h-20 border-neutral-200/60!" : "max-h-60"
       )}
     >
-      <div className="flex w-full max-w-(--breakpoint-xl) flex-row space-x-4 py-6 px-8 md:space-x-8">
-        <div className="flex flex-row justify-end space-x-4 overflow-visible transition-all md:space-x-8">
-          <Bund isClosed={scrollOffset > 0} />
-        </div>
-        <div className="ml-auto flex flex-row items-center flex-shrink-0 flex-grow-0 space-x-4 overflow-visible transition-all md:space-x-8">
+      <div
+        className={clsx(
+          "flex w-full max-w-(--breakpoint-xl) flex-row space-x-4 py-6 px-8 md:space-x-8",
+          scrollOffset > 0 ? "items-center" : "items-start"
+        )}
+      >
+        <Bund isClosed={scrollOffset > 0} />
+        <div
+          className={clsx(
+            "flex flex-row items-center space-x-4 overflow-visible whitespace-nowrap transition-all md:space-x-8",
+            scrollOffset > 0 ? "w-0 -translate-x-24" : "w-full"
+          )}
+        >
           {loadingNav ? (
-            <p className="text-sm text-neutral-500">Loading nav...</p>
+            <p className="pt-2 text-sm text-neutral-500">Loading nav...</p>
           ) : (
             navBarItems.map((item) => (
               <NavbarLink key={item.id} href={item.href} target={item.openInNewTab ? "_blank" : undefined}>

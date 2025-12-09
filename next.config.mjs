@@ -16,12 +16,10 @@ const __dirname = path.dirname(__filename)
 const config = {
   reactStrictMode: true,
   output: 'standalone',
+  allowedDevOrigins: ['192.168.1.216', 'localhost'],
   images: {
     // Ref: https://github.com/vercel/next.js/issues/54482
     unoptimized: true,
-  },
-  experimental: {
-    reactCompiler: false,
   },
   turbopack: {
     resolveAlias: {

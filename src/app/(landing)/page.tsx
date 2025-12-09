@@ -4,12 +4,10 @@ import FeaturedBuild from "../../components/branding/FeaturedBuild";
 import SocialButton from "../../components/buttons/SocialButton";
 import TelegramButton from "../../components/buttons/TelegramButton";
 import { MdiGithub } from "../../components/icons/FeatureCardIcons";
-// import bannerContent from "../(content)/banner"; // To be replaced by dynamic fetch
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import PortalLore from "../../components/svgBased/PortalLore";
 import DynamicContentCard, { DynamicCardData as PageContentCardData } from "../../components/branding/cards/DynamicContentCard"; // Renamed import for clarity
 import FeaturedBuildHighlight from "../../components/branding/FeaturedBuildHighlight"; // Import the new component
-import { LemonSqueezyLogo, PatreonLogo } from "../../components/icons/CupOfCoffees";
 import clsx from "clsx"; // Added clsx import
 import ZaFrame from "../../components/branding/HelpWantedBanner";
 import CustomPatreonCard from "../../components/branding/cards/CustomPatreonCard";
@@ -57,6 +55,8 @@ interface ContentCardData extends Omit<PageContentCardData, 'className' | 'cardI
   id: string; // Added id field
   cardIcon?: PayloadMediaData | null;
   sortOrder?: number; // Added sortOrder field
+  cardType?: 'dynamic' | 'patreon' | 'cup-of-coffee';
+  backgroundImage?: PayloadMediaData | null;
 }
 
 interface BannerData {
@@ -187,37 +187,45 @@ export default async function Index() {
           id="hero"
           className="mb-40 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8" // Adjusted grid for dynamic cards
         >
-          <CustomPatreonCard cardIdentifier="patreon" />
-          <CustomPatreonCard cardIdentifier="cup-of-coffee" />
           {allContentCards && allContentCards.length > 0 ? (
-            allContentCards.map((card) => (
-              <DynamicContentCard
-                key={card.id} // Use a unique key for list items
-                cardIdentifier={card.cardIdentifier}
-                title={card.title}
-                description={card.description}
-                buttonText={card.buttonText}
-                buttonLink={card.buttonLink}
-                cardIcon={card.cardIcon}
-                backgroundColorClass={card.backgroundColorClass}
-                textColorClass={card.textColorClass}
-                borderColorClass={card.borderColorClass}
-                buttonCustomClasses={card.buttonCustomClasses}
-              />
-            ))
+            allContentCards.map((card) => {
+              switch (card.cardType) {
+                case 'patreon':
+                case 'cup-of-coffee':
+                  // The 'as any' is a temporary workaround for the type mismatch,
+                  // as the base card data structure is compatible.
+                  return <CustomPatreonCard key={card.id} cardData={card as any} />;
+                case 'dynamic':
+                default:
+                  return (
+                    <DynamicContentCard
+                      key={card.id}
+                      cardIdentifier={card.cardIdentifier}
+                      title={card.title}
+                      description={card.description}
+                      buttonText={card.buttonText}
+                      buttonLink={card.buttonLink}
+                      cardIcon={card.cardIcon}
+                      backgroundColorClass={card.backgroundColorClass}
+                      textColorClass={card.textColorClass}
+                      borderColorClass={card.borderColorClass}
+                      buttonCustomClasses={card.buttonCustomClasses}
+                    />
+                  );
+              }
+            })
           ) : null}
-          {/* No fallback message for content cards, renders nothing if array is empty or null */}
           {/* <StudentPortal /> */}
         </div>
       </section>
       <section
         id="JOINTHECULT"
-        className="mx-auto mb-10 flex max-w-[90%] flex-col items-center space-y-[-10px]"
+        className="mx-auto mb-10 flex max-w-[90%] flex-col items-center -space-y-2.5"
       >
-        <p className="text-center text-3xl font-medium leading-normal tracking-tighter text-(--color-hosPink) md:text-4xl">
+        <p className="text-center text-3xl font-medium leading-normal tracking-tighter text-hosPink md:text-4xl">
           Loophole is{" "}
           <DistortedText
-            className="font-bold text-(--color-hosPink)"
+            className="font-bold text-hosPink"
             color1="var(--hosPink-glitch1)"
             color2="var(--hosPink-glitch2)"
           >
@@ -229,22 +237,11 @@ export default async function Index() {
           This{" "}
           <DistortedText
             time={5}
-            className="font-bold text-(--color-darkslategray)"
-            color1="var(--darkslategray-glitch1)"
-            color2="var(--darkslategray-glitch2)"
-          >
-            Pixel 10 Pro is part of loophole.closed track
-          </DistortedText>{" "}
-        </p>
-        <p className="max-w-full text-center text-3xl font-medium leading-normal tracking-tighter text-neutral-400 md:text-4xl">
-          Google (don't wanna) say that{" "}
-          <DistortedText
-            time={7}
-            className="font-bold text-(--color-cold-dark)"
+            className="font-bold text-cold-dark"
             color1="var(--cold-dark-glitch1)"
             color2="var(--cold-dark-glitch2)"
           >
-            AOSP become Read-Only
+            Pixel 10 Pro is part of loophole.closed track
           </DistortedText>{" "}
         </p>
         <p className="max-w-full text-center text-3xl font-medium leading-normal tracking-tighter text-neutral-400 md:text-4xl">

@@ -9,6 +9,11 @@ interface ActionCardData {
   icon?: {
     url: string;
     alt: string;
+    sizes?: {
+      icon?: {
+        url?: string;
+      }
+    }
   };
 }
 
@@ -43,7 +48,15 @@ const ActionCard = async ({ className }: { className?: string }) => {
         const isExternal = card.href.includes("https");
         const cardContent = (
           <div className="flex items-center gap-3">
-            {card.icon && <Image src={card.icon.url} alt={card.icon.alt} width={24} height={24} />}
+            {card.icon && <Image
+              src={card.icon.sizes?.icon?.url || card.icon.url}
+              alt={card.icon.alt}
+              width={194}
+              height={47}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />}
             <span>{card.title}</span>
           </div>
         );

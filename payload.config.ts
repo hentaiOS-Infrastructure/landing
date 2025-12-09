@@ -1,10 +1,22 @@
 import sharp from 'sharp'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { buildConfig, CollectionConfig } from 'payload'
+import { buildConfig, CollectionConfig, GlobalConfig } from 'payload'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
-// Removed import { CollectionConfig } from 'payload/types';
+// Helper function to generate a URL-friendly slug from a string
+const slugify = (text: string): string => {
+  if (!text) return '';
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+};
 
 const Pages: CollectionConfig = {
   slug: 'pages',
@@ -125,6 +137,12 @@ const Media: CollectionConfig = {
         width: 1280,
         height: 520,
         position: 'centre',
+      },
+      {
+        name: 'icon',
+        width: 194,
+        height: 47,
+        position: 'centre',
       }
     ],
     adminThumbnail: 'thumbnail', // Which image size to use for admin panel thumbnails
@@ -145,12 +163,44 @@ const ContentCards: CollectionConfig = {
   slug: 'content-cards',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'cardIdentifier', 'sortOrder', 'updatedAt'],
+    defaultColumns: ['title', 'cardIdentifier', 'cardType', 'sortOrder', 'updatedAt'],
   },
   access: {
     read: () => true,
   },
+  hooks: {
+    beforeChange: [
+      ({ data }) => {
+        if (data.cardType === 'dynamic') {
+          // If it's a dynamic card, slugify the title
+          if (data.title) {
+            data.cardIdentifier = slugify(data.title);
+          }
+        } else {
+          // For other types, use the cardType value directly
+          data.cardIdentifier = data.cardType;
+        }
+        return data;
+      },
+    ],
+  },
   fields: [
+    {
+      name: 'cardType',
+      type: 'select',
+      label: 'Card Type',
+      options: [
+        { label: 'Dynamic', value: 'dynamic' },
+        { label: 'Patreon', value: 'patreon' },
+        { label: 'Cup of Coffee', value: 'cup-of-coffee' },
+      ],
+      required: true,
+      defaultValue: 'dynamic',
+      admin: {
+        position: 'sidebar',
+        description: 'Select the type of card. "Dynamic" cards are rendered from this data, while others have specialized components.',
+      },
+    },
     {
       name: 'cardIdentifier',
       type: 'text',
@@ -158,7 +208,8 @@ const ContentCards: CollectionConfig = {
       required: true,
       unique: true,
       admin: {
-        description: 'A unique slug to identify this card programmatically.',
+        description: 'A unique slug to identify this card programmatically. This is auto-generated.',
+        readOnly: true,
       },
     },
     {
@@ -321,7 +372,19 @@ const NavigationLinks: CollectionConfig = {
       name: 'title',
       type: 'text',
       label: 'Link Title',
-      required: true,
+      required: false,
+      admin: {
+        condition: ({ location }) => location === 'navbar',
+      },
+    },
+    {
+      name: 'linkLabel',
+      type: 'text',
+      label: 'Link Label',
+      required: false,
+      admin: {
+        condition: ({ location }) => location === 'footer_col1' || location === 'footer_col2',
+      },
     },
     {
       name: 'href',
@@ -360,16 +423,6 @@ const NavigationLinks: CollectionConfig = {
       label: 'Open in New Tab?',
       defaultValue: false,
     },
-    {
-      name: 'isColumnHeader',
-      type: 'checkbox',
-      label: 'Is this a Column Header?',
-      admin: {
-        description: 'If checked, this item will be styled as a header for a list of links (e.g., in the footer). The "Link URL" will be ignored.',
-        position: 'sidebar',
-      },
-      defaultValue: false,
-    }
   ],
 };
 
@@ -415,11 +468,50 @@ const ActionCards: CollectionConfig = {
   ],
 };
 
+const Globals: GlobalConfig = {
+  slug: 'site-settings',
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'favicon',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Favicon',
+    },
+    {
+      name: 'footerColumns',
+      type: 'array',
+      label: 'Footer Columns',
+      fields: [
+        {
+          name: 'header',
+          type: 'text',
+          label: 'Header',
+          required: true,
+        },
+        {
+          name: 'location',
+          type: 'select',
+          label: 'Location',
+          options: [
+            { label: 'Footer - Column 1', value: 'footer_col1' },
+            { label: 'Footer - Column 2', value: 'footer_col2' },
+          ],
+          required: true,
+        },
+      ],
+    },
+  ],
+};
+
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
   // Define and configure your collections in this array
   collections: [Pages, FeaturedBuilds, Media, ContentCards, Banners, NavigationLinks, ActionCards], // Added ActionCards
+  globals: [Globals],
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
   // Whichever Database Adapter you're using should go here

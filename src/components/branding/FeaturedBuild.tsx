@@ -54,17 +54,19 @@ const FeaturedBuild = (props: FeaturedBuildProps) => {
         >
           {/* Image Container */}
           <div className={clsx(
-            isSingleMode ? "w-full md:w-1/3 lg:w-1/4 flex-shrink-0" : "w-full",
+            isSingleMode ? "w-full md:w-1/3 lg:w-1/4 shrink-0" : "w-full",
             "relative"
           )}>
             <Image
               src={image?.url ? `${process.env.NEXT_PUBLIC_PAYLOAD_URL || ''}${image.url}` : "/featured-logo-default.svg"}
               height={isSingleMode ? (image?.height || 150) : (image?.height || 100)}
               width={isSingleMode ? (image?.width || 150) : (image?.width || 224)}
-              // style={{ objectFit: "contain" }} // objectFit is better applied via className for Next.js 13+
               className={clsx(isSingleMode ? "mb-4 md:mb-0" : "mb-4", "object-contain")}
-              alt={image?.alt ?? "Featured Build Image"} // alt is already required and handled
-            />
+              alt={image?.alt ?? "Featured Build Image"}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
 
           {/* Content Container (Description + Button) */}

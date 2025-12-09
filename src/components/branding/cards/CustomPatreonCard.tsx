@@ -1,97 +1,52 @@
 "use client";
 
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-interface CustomCardData {
+// Define the shape of the card data expected as a prop
+export interface CustomCardData {
     title: string;
     buttonText: string;
     buttonLink: string;
     backgroundImage?: { url: string; alt: string };
-    logo?: { url: string; alt: string };
+    cardIcon?: { url: string; alt: string; sizes?: { icon?: { url?: string; } } };
 }
 
-async function getCustomCardData(identifier: string): Promise<CustomCardData | null> {
-    try {
-        const res = await fetch(
-            `${process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000'}/api/content-cards?where[cardIdentifier][equals]=${identifier}&limit=1&depth=1`
-        );
-        if (!res.ok) {
-            console.error(`Failed to fetch custom card data for ${identifier}:`, res.status, await res.text());
-            return null;
-        }
-        const data = await res.json();
-        if (data.docs && data.docs.length > 0) {
-            const doc = data.docs[0];
-            return {
-                title: doc.title,
-                buttonText: doc.buttonText,
-                buttonLink: doc.buttonLink,
-                backgroundImage: doc.backgroundImage, // Assuming a 'backgroundImage' field in Payload
-                logo: doc.cardIcon, // Reusing cardIcon as logo
-            };
-        }
-        return null;
-    } catch (error) {
-        console.error(`Error fetching custom card data for ${identifier}:`, error);
-        return null;
-    }
-}
-
-
-const CustomPatreonCard = ({ className, cardIdentifier }: { className?: string, cardIdentifier: string }) => {
-    const [cardData, setCardData] = useState<CustomCardData | null>(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
-            const data = await getCustomCardData(cardIdentifier);
-            setCardData(data);
-            setLoading(false);
-        }
-        if (cardIdentifier) {
-            fetchData();
-        }
-    }, [cardIdentifier]);
-
-    if (loading) {
-        return (
-            <div className={clsx("square group relative flex w-full flex-col rounded-xl border-2 border-hosGold bg-portalBg p-8 items-center justify-center", className)}>
-                <p className="text-white">Loading Card...</p>
-            </div>
-        );
-    }
-
+const CustomPatreonCard = ({ className, cardData }: { className?: string, cardData: CustomCardData }) => {
     if (!cardData) {
-        return (
-            <div className={clsx("square group relative flex w-full flex-col rounded-xl border-2 border-hosGold bg-portalBg p-8 items-center justify-center", className)}>
-                <p className="text-white">Card data for '{cardIdentifier}' unavailable.</p>
-            </div>
-        );
+        return null;
     }
 
-    const backgroundStyle = cardData.backgroundImage ? { backgroundImage: `url(${cardData.backgroundImage.url})` } : { backgroundImage: 'url(/patreon-blue-shapes.svg)' };
+    // Use the provided background image or a default fallback
+    const backgroundStyle = cardData.backgroundImage
+        ? { backgroundImage: `url(${process.env.NEXT_PUBLIC_PAYLOAD_URL || ''}${cardData.backgroundImage.url})` }
+        : { backgroundImage: 'url(/patreon-blue-shapes.svg)' };
 
     return (
         <div
             className={clsx(
-                "square group relative flex w-full flex-col rounded-xl border-2 border-hosGold bg-portalBg transition-shadow hover:shadow-lg hover:shadow-portalBg/25",
+                "square group relative flex w-full flex-col rounded-xl border-2 border-hosGold bg-portalBg transition-shadow hover:shadow-lg hover:shadow-portalBg/25 overflow-hidden",
                 className
             )}
         >
             <a href={cardData.buttonLink || "#"} className="flex h-full flex-col">
                 <div className="flex h-full grow flex-col justify-end rounded-lg bg-black text-white">
                     <div
-                        className="mt-4 flex h-full w-full bg-contain bg-bottom bg-no-repeat"
+                        className="mt-4 flex grow w-full bg-contain bg-bottom bg-no-repeat"
                         style={backgroundStyle}
                     >
                         <div className="relative w-full h-full flex items-center justify-center">
-                            {cardData.logo ? (
-                                <Image src={cardData.logo.url} alt={cardData.logo.alt} layout="fill" objectFit="contain" />
+                            {cardData.cardIcon?.url ? (
+                                <div className="relative w-[194px] h-[47px]">
+                                    <Image
+                                        src={`${process.env.NEXT_PUBLIC_PAYLOAD_URL || ''}${cardData.cardIcon.sizes?.icon?.url || cardData.cardIcon.url}`}
+                                        alt={cardData.cardIcon.alt}
+                                        className="object-contain"
+                                        fill
+                                        sizes="100vw" />
+                                </div>
                             ) : (
-                                <div className="w-full h-full bg-[url(/patreon-blue-shapes.svg)] bg-contain bg-bottom bg-no-repeat" />
+                                (<div className="w-full h-full bg-[url(/patreon-blue-shapes.svg)] bg-contain bg-bottom bg-no-repeat" />)
                             )}
                         </div>
                     </div>

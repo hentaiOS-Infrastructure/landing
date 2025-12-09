@@ -29,17 +29,17 @@ const FeaturedBuildHighlight: React.FC<FeaturedBuildHighlightProps> = ({
         <div className={clsx("flex-1 w-full", className)}>
             <Link
                 href={linkURL}
-                className="group block w-full rounded-xl border border-neutral-300 transition-shadow hover:shadow-lg hover:shadow-portalBg/25 overflow-hidden relative aspect-[3/1]" // Changed to 3:1 aspect ratio
-            // passHref is not needed if Link renders the <a> tag itself or if the child is a simple element
-            // legacyBehavior removed
+                className="group block w-full rounded-xl border border-neutral-300 transition-shadow hover:shadow-lg hover:shadow-portalBg/25 overflow-hidden relative aspect-3/1"
             >
                 <Image
                     src={imageUrl}
                     alt={image.alt ?? "Highlight image"}
-                    fill
                     priority
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+                    fill
+                    className="object-cover"
+                    style={{
+                        maxWidth: "100%",
+                    }} />
             </Link>
         </div>
     );
